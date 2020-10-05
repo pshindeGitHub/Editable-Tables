@@ -1,0 +1,15 @@
+<div class="section">
+  <div class="head">
+      <div class="header_contain">
+          <div class="logo">
+              <img style="height: 3.5rem;" src="assets/chatlogo.png">
+          </div>
+      </div>
+  </div>
+</div>
+<ul>
+  <li> <a [routerLink]="['/ask']"><button  class="btn btn_break" (click)="ask()">Ask</button></a></li>
+  <li> <a [routerLink]="['/ask-refer']"><button  class="btn btn_break" (click)="askRef()">AskRef</button></a></li>
+  <li> <a [routerLink]="['sugestion']"><button  class="btn btn_break" (click)="suggestion()">suggestion</button></a></li>
+</ul>
+<router-outlet></router-outlet>

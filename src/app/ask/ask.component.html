@@ -1,0 +1,55 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div  class="container" style="padding: 10px;">
+    <h3 style="text-align:center">Editable-Ask</h3>
+    <ul>
+      <li>
+        <span style="padding:10px;">Search:</span>
+        <input type="text" placeholder="Search"  [(ngModel)]="searchTerm" style="width: 50%;">
+      </li>
+      <li>
+        <mat-paginator [pageSizeOptions]="[10,20]" style=" margin-right: 150px;"></mat-paginator>  
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <table  class="table table-bordered"    >
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Child</th>
+          <th>Header</th>
+          <th>Value</th>
+          <th style="width: 12%;">Action</th>
+        </tr>
+        <tr *ngFor="let detail of obs | async |filter:searchTerm ; let i = index" [attr.name]="detail.name">
+          <td>
+            <span *ngIf="!detail.editable">{{detail.id}}</span>
+            <input type="text" class="form-control" [(ngModel)]="detail.id" *ngIf="detail.editable"/>
+          </td>    
+          <td>
+            <span *ngIf="!detail.editable">{{detail.header}}</span>
+            <input type="text" class="form-control" [(ngModel)]="detail.header" *ngIf="detail.editable"/>
+          </td> 
+          <td>
+            <span *ngIf="!detail.editable">{{detail.child}}</span>
+             <input type="text" class="form-control" [(ngModel)]="detail.child" *ngIf="detail.editable"/>
+          </td>
+          <td>
+            <span *ngIf="!detail.editable">{{detail.value}}</span>
+             <input type="text" class="form-control" [(ngModel)]="detail.value" *ngIf="detail.editable"/>
+          </td>
+          
+          <td>
+            <button class="fa fa-pencil btn btn-success btn_edit_delete"  (click)="editdetail(detail)" *ngIf="!detail.editable"></button>
+            <button class="fa fa-save btn btn-success btn_edit_delete"  (click)="editdetail(detail)"  *ngIf="detail.editable"></button>
+            <button id="remove" class="fa fa-close btn btn-primary btn_edit_delete" (click)="deleteRow(i)"> </button>
+             <button (click)="addItem1(i)" class="btn add_btn">Add</button>
+            </td>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <!-- <mat-paginator [pageSizeOptions]="[5,10]" style=" margin-right: 150px;"></mat-paginator>   -->
+    </div>
+ 
